@@ -18,6 +18,10 @@ Kiekvienai rekurentinei lygčiai (gautai atlikus užduoties pasirinkimo testą):
 * Atlikti eksperimentinį tyrimą (našumo testus: vykdymo laiką ir veiksmų skaičių) ir patikrinkite
 	ar apskaičiuotas metodo asimptotinis sudėtingumas atitinka eksperimentinius rezultatus (1 balas).
 
+1. $T(n)=2 T(\frac{n}{9})+n^5$
+2.
+3.
+
 ## 2 užduoties dalis
 Naudojant rekursiją ir nenaudojant grafinių bibliotekų sudaryti nurodytos struktūros
 BMP formato ( gautą atlikus užduoties pasirinkimo testą):
@@ -32,3 +36,5 @@ BMP formato ( gautą atlikus užduoties pasirinkimo testą):
 * Analitiškai įvertinkite procedūros, kuri generuoja paveikslėlį, veiksmų skaičių sudarydami
 	rekurentinę lygtį ir ją išspręskite. Gautas rezultatas turi patvirtinti eksperimentinius
 	rezultatus (našumo testus: vykdymo laiką ir veiksmų skaičių). (1 balas)
+
+![Užduotis 2](./uzduotis2.png)
