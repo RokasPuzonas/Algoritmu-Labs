@@ -19,8 +19,8 @@ Kiekvienai rekurentinei lygčiai (gautai atlikus užduoties pasirinkimo testą):
 	ar apskaičiuotas metodo asimptotinis sudėtingumas atitinka eksperimentinius rezultatus (1 balas).
 
 1. $T(n)=2 T(\frac{n}{9})+n^5$
-2.
-3.
+2. $T(n)=T(\frac{n}{6}) + T(\frac{n}{7}) + n$
+3. $T(n)=T(n-8) + T(n-6) + n$
 
 ## 2 užduoties dalis
 Naudojant rekursiją ir nenaudojant grafinių bibliotekų sudaryti nurodytos struktūros
