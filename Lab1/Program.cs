@@ -7,61 +7,58 @@ namespace Lab1
     class Program
     {
         // O(n^5)
-        public static double T1(int[] n, int size)
+        public static int T1(int[] n, int size)
         {
-            if (size >= 1)
+            if (size < 1)
+                return 0;
+
+            int sum = 0;
+            for (int i = 0; i < Math.Pow(size, 5); i++)
             {
-                int sum = 0;
-                for (int i = 0; i < Math.Pow(size, 5); i++)
-                {
-                    sum += i;
-                }
-                return 2 * T1(n, size / 9) + sum;
+                sum++;
             }
-            return 0;
+            return T1(n, size / 9) + T1(n, size / 9) + sum;
         }
 
-        public static double T1(int[] n)
+        public static int T1(int[] n)
         {
             return T1(n, n.Length);
         }
 
         // O(n)
-        public static double T2(int[] n, int size)
+        public static int T2(int[] n, int size)
         {
-            if (size >= 1)
+            if (size < 1)
+                return 0;
+
+            int sum = 0;
+            for (int i = 0; i < size; i++)
             {
-                int sum = 0;
-                for (int i = 0; i < size; i++)
-                {
-                    sum += i;
-                }
-                return T2(n, size / 6) + T2(n, size / 7) + sum;
+                sum++;
             }
-            return 0;
+            return T2(n, size / 6) + T2(n, size / 7) + sum;
         }
 
-        public static double T2(int[] n)
+        public static int T2(int[] n)
         {
             return T2(n, n.Length);
         }
 
         // O(n^2)
-        public static double T3(int[] n, int size)
+        public static int T3(int[] n, int size)
         {
-            if (size >= 1)
+            if (size < 1)
+                return 0;
+
+            int sum = 0;
+            for (int i = 0; i < size; i++)
             {
-                int sum = 0;
-                for (int i = 0; i < size; i++)
-                {
-                    sum += i;
-                }
-                return T3(n, size - 8) + T3(n, size - 6) + sum;
+                sum++;
             }
-            return 0;
+            return T3(n, size - 8) + T3(n, size - 6) + sum;
         }
 
-        public static double T3(int[] n)
+        public static int T3(int[] n)
         {
             return T3(n, n.Length);
         }
@@ -94,13 +91,17 @@ namespace Lab1
 
         public static void Triangles()
         {
-            BMPImage image = new BMPImage(1000, 1000);
+            uint size = 40_000;
+            BMPImage image = new BMPImage(size, size);
             image.Fill(new Color(255, 255, 255));
+            var before = DateTime.Now;
             TrianglesRecursive(image, 0, 0, image.width, image.height);
+            var duration = DateTime.Now - before;
+            Console.WriteLine("Triangles render duration: {0}", duration.TotalSeconds);
             image.Write("result.bmp");
         }
 
-        public static double TestFunc(Func<int[], double> T, uint n)
+        public static double TestFunc(Func<int[], int> T, uint n)
         {
             int[] data = new int[n];
             for (int i = 0; i < n; i++)
@@ -116,23 +117,34 @@ namespace Lab1
 
         static void Main()
         {
-            // T1(10) => 0.0056552
-            // T1(20) => 0.0699722
-            // T1(40) => 2.1500858
-            // T1(50) => 6.4564238
+            /*
+            uint[] N1 = { 10, 15, 20, 25, 30, 35, 40 };
+            Console.WriteLine("T1, s");
+            foreach (uint n in N1)
+            {
+                Console.WriteLine("{0}, {1}", n, TestFunc(T1, n));
+            }
+            */
 
-            // T2(100)           => 0.0039419
-            // T2(1_000_000)     => 0.0048064
-            // T2(250_000_000)   => 0.3011757
-            // T2(500_000_000)   => 0.6046134
-            // T2(1_000_000_000) => 1.1902643
+            /*
+            uint[] N2 = { 100, 1_000_000, 250_000_000, 500_000_000, 1_000_000_000, 1_500_000_000 };
+            Console.WriteLine("T2, s");
+            foreach (uint n in N2)
+            {
+                Console.WriteLine("{0}, {1}", n, TestFunc(T2, n));
+            }
+            */
 
-            // T3(100) => 0.0041945
-            // T3(150) => 0.0759872
-            // T3(180) => 1.4428123
-            // T3(190) => 3.9067703
+            /*
+            uint[] N3 = { 100, 150, 160, 170, 180, 185 };
+            Console.WriteLine("T3, s");
+            foreach (uint n in N3)
+            {
+                Console.WriteLine("{0}, {1}", n, TestFunc(T3, n));
+            }
+            */
 
-            //Triangles();
+            Triangles();
         }
     }
 }
