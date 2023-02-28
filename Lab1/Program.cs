@@ -6,7 +6,6 @@ namespace Lab1
 {
     class Program
     {
-        // O(n^5)
         public static int T1(int[] n, int size)
         {
             if (size < 1)
@@ -25,7 +24,6 @@ namespace Lab1
             return T1(n, n.Length);
         }
 
-        // O(n)
         public static int T2(int[] n, int size)
         {
             if (size < 1)
@@ -44,7 +42,6 @@ namespace Lab1
             return T2(n, n.Length);
         }
 
-        // O(n^2)
         public static int T3(int[] n, int size)
         {
             if (size < 1)
@@ -63,7 +60,6 @@ namespace Lab1
             return T3(n, n.Length);
         }
 
-        // O(log4(n))
         public static void TrianglesRecursive(BMPImage image, int x, int y, uint width, uint height)
         {
             if (width <= 3 || height <= 3) return;
