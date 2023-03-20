@@ -1,3 +1,3 @@
-# Duomenų strukūrų laborai
+# Algoritmų laborai
 
 :)
